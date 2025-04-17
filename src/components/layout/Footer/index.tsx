@@ -24,7 +24,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate">
       <div className="flex flex-col items-center gap-6 pt-20 max-w-screen-lg mx-auto px-5">
-        <Heading size="md" type="h2" className="text-white">
+        <Heading size="lg" type="h2" className="text-white">
           No waiting. No faff. Find a clinician you click with.
         </Heading>
         <p className="text-center text-white">Get seen by a doctor today.</p>

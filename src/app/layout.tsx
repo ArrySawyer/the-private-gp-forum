@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const metadata: Metadata = {

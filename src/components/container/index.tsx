@@ -1,24 +1,26 @@
 import type { ReactNode } from "react";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const container = cva(["mx-auto", "px-5"], {
+const containerVariants = cva(["mx-auto", "px-2"], {
   variants: {
     size: {
-      xs: ["max-w-[calc(var(--screen-xs)+40px)]"],
+      xs: ["max-w-screen-xs"],
       sm: ["max-w-screen-sm"],
       md: ["max-w-screen-md"],
-      lg: ["max-w-(--screen-lg)"],
+      lg: ["max-w-screen-lg"],
+      xl: ["max-w-screen-xl"],
+      full: [""],
     },
   },
   defaultVariants: {
-    size: "lg",
+    size: "md",
   },
 });
 
 export interface ContainerProps {
   children?: ReactNode;
-  size?: "xs" | "sm" | "md" | "lg";
+  size?: NonNullable<VariantProps<typeof containerVariants>["size"]>;
   className?: string;
 }
 
@@ -26,7 +28,7 @@ const Container = ({ children, size, className }: ContainerProps) => {
   return (
     <div
       className={cn(
-        container({
+        containerVariants({
           size,
           className,
         })

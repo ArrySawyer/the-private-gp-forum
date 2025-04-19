@@ -35,6 +35,15 @@ const buttonVariants = cva(
           "focus-visible:from-mid-pink",
           "focus-visible:to-mid-pink",
         ],
+        secondary: [
+          "bg-dark/10",
+          "text-white",
+          "border",
+          "border-white",
+          "hover:bg-dark/25",
+          "focus-visible:outline-none",
+          "focus-visible:bg-dark/25",
+        ],
       },
       size: {
         sm: ["py-3", "px-5", "rounded-[20px]"],

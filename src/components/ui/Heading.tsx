@@ -1,11 +1,12 @@
 import type { JSX } from "react";
 import React, { ReactNode } from "react";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const headingVariants = cva(["font-extrabold"], {
   variants: {
     size: {
+      md: ["text-3xl", "sm:text-[40px]", "leading-none"],
       lg: ["text-5xl", "sm:text-[64px]", "leading-none"],
     },
     center: {
@@ -14,7 +15,7 @@ const headingVariants = cva(["font-extrabold"], {
     },
   },
   defaultVariants: {
-    size: "lg",
+    size: "md",
     center: true,
   },
 });
@@ -22,7 +23,7 @@ const headingVariants = cva(["font-extrabold"], {
 export interface HeadingProps {
   children: ReactNode;
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "div";
-  size?: "lg";
+  size?: NonNullable<VariantProps<typeof headingVariants>["size"]>;
   className?: string;
   center?: boolean;
 }

@@ -1,10 +1,10 @@
 import Container, { type ContainerProps } from "../container";
 import type { ReactNode } from "react";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import Heading from "@/components/ui/Heading";
 
-const section = cva(["py-8", "m-2", "rounded-3xl"], {
+const sectionVariants = cva(["py-15"], {
   variants: {
     background: {
       noBackground: [""],
@@ -13,7 +13,7 @@ const section = cva(["py-8", "m-2", "rounded-3xl"], {
       gradientPurple: ["bg-gradient-purple"],
     },
     size: {
-      md: ["py-10"],
+      md: ["py-15"],
       lg: ["py-12 sm:py-20"],
     },
   },
@@ -25,12 +25,8 @@ const section = cva(["py-8", "m-2", "rounded-3xl"], {
 
 export interface SectionProps {
   children?: ReactNode;
-  background?:
-    | "noBackground"
-    | "darkPurple"
-    | "gradientGreen"
-    | "gradientPurple";
-  size?: "md" | "lg";
+  background?: NonNullable<VariantProps<typeof sectionVariants>["background"]>;
+  size?: NonNullable<VariantProps<typeof sectionVariants>["size"]>;
   containerSize?: ContainerProps["size"];
   className?: string;
   containerClassName?: string;
@@ -63,7 +59,7 @@ const Section = ({
   return (
     <section
       className={cn(
-        section({
+        sectionVariants({
           background,
           size,
           className: className,
